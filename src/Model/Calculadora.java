@@ -11,7 +11,6 @@ public class Calculadora {
 		acumulador=0;
 	}
 	
-	//
 	public static void igual( String pantalla){
 		switch (signo){
 		case '+':
@@ -26,7 +25,7 @@ public class Calculadora {
 		case '/':
 			diviAux(pantalla);
 			break;
-			default://se introduce un nuemero no se detecta singun signo resultado sera el mismo numero
+			default://se introduce un nuemero y no se detecta singun signo el resultado sera el mismo numero.
 				primerValor(pantalla);
 				break;
 		}
@@ -34,7 +33,12 @@ public class Calculadora {
 		signo='=';
 	}
 	public static void suma(String pantalla){
-		
+		/*
+		 * Pq en cada metodo hay todas las operaciones?
+		 * 		pq si hacemos (2-2+3=3) cuando apretamos el - tiene que hacer una suma y no una resta.
+		 * 		y asi en todas las operaciones incluso cuando apretamos el = tendra que realizar la operacion marcada por
+		 * 		el ultimo signo pulsado.
+		 */
 		if(signo=='+'){
 			sumaAux(pantalla);
 		}else if(signo=='-'){
@@ -101,7 +105,7 @@ public class Calculadora {
 		signo='/';
 		
 	}
-	//metodos auxiliares para no escribir en cada signo lo mismo
+	//metodos auxiliares para no escribir en cada metodo y signo lo mismo
 	private static void sumaAux(String pantalla){
 		num=Double.parseDouble(pantalla);
 		acumulador+=num;
@@ -125,10 +129,11 @@ public class Calculadora {
 		num=Double.parseDouble(pantalla);
 		acumulador=num;
 	}
-
+	//metodo para retornar resultado
 	public static double getNum(){
 		return acumulador;
 	}
+	//metofo para poner todo a 0
 	public static void reset(){
 		num=0;
 		acumulador=0;

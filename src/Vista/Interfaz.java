@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,12 +32,12 @@ public class Interfaz extends JFrame {
 		panelcontenido.setLayout(boxlayaut);
 		
 			visor=new JPanel();
-			visor.setBackground(Color.red);
-			visor.setMaximumSize(new Dimension(2999,50));//pq?
+			visor.setMaximumSize(new Dimension(300,50));
 		
 				pan= new JTextField("0.0");
 				pan.setHorizontalAlignment(JTextField.RIGHT);
 				pan.setFont(new Font("Arial", Font.PLAIN, 30));
+				pan.setEditable(false);
 				pan.setPreferredSize(new Dimension(300,35));
 		
 			visor.add(pan);
@@ -65,13 +64,16 @@ public class Interfaz extends JFrame {
 		
 		panelcontenido.add(pbotones);
 		
+		this.setTitle("Calculadora MVC");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setPreferredSize(new Dimension(300,350));
+		this.setLocationRelativeTo(null);//tendria que abrir la aplicacion en el medio de la pantalla pero en mac pantalla retina no
 		this.setResizable(false);
 		this.setVisible(true);
 		this.pack();
 	}
 	
+	//metodo el cual pondra listeners a los botones usando la clase controlador de nestro modelo MVC
 	public void addListeners(Calculos controler){
 		
 		for(int i=0; i<4; i++){
@@ -80,15 +82,19 @@ public class Interfaz extends JFrame {
 			}
 		}
 	}
-
+	//metodo para que la clase controladora pueda disponer de los botones, es decir retornara la coleccion de botones
 	public JButton[][] getButtons() { 
 		return botones;
 	}
+	//metodo para madificar la visual de la pantalla con el valor asignado
 	public void setValueToDisplay(String value){ 
 		this.pan.setText(value);
 	}
+	//metodo para obtener lo que hay en la pantalla
 	public String getPantalla(){
 		return this.pan.getText();
 	}
+
+	
 
 }
